@@ -206,7 +206,7 @@ git submodule status
 
 ## License
 
-[Specify your license here]
+MIT License
 
 ## Resources
 
