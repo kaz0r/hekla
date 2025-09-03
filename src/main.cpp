@@ -3,6 +3,10 @@
 
 #include <iostream>
 
+// spdlog is available in extern/spdlog/ 
+// To use: #define SPDLOG_HEADER_ONLY then #include <spdlog/spdlog.h>
+// Note: May need fmt library properly configured for your system
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_input(GLFWwindow *window);
 
@@ -44,6 +48,9 @@ int main()
     std::cout << "GLSL Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
     std::cout << "Vendor: " << glGetString(GL_VENDOR) << std::endl;
     std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;
+    
+    // Example of how to use spdlog (commented out due to fmt version conflict):
+    // spdlog::info("Hekla engine initialized successfully!");
 
     // Main render loop
     while (!glfwWindowShouldClose(window))

@@ -20,17 +20,28 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/extern/glfw/CMakeLists.txt")
     message(FATAL_ERROR "Git submodules not initialized. Run: git submodule update --init --recursive")
 endif()
 
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/extern/spdlog/CMakeLists.txt")
+    message(FATAL_ERROR "Git submodules not initialized. Run: git submodule update --init --recursive")
+endif()
+
 # Configure GLFW options
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
-# Add GLFW subdirectory
+# Configure spdlog options
+set(SPDLOG_BUILD_EXAMPLE OFF CACHE BOOL "" FORCE)
+set(SPDLOG_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(SPDLOG_FMT_EXTERNAL OFF CACHE BOOL "" FORCE)
+
+# Add subdirectories
 add_subdirectory(extern/glfw)
+add_subdirectory(extern/spdlog)
 
 # Add include directories
 include_directories(${CMAKE_SOURCE_DIR}/include)
 include_directories(${CMAKE_SOURCE_DIR}/extern/glad/include)
+include_directories(${CMAKE_SOURCE_DIR}/extern/spdlog/include)
 
 # Collect all source files
 file(GLOB_RECURSE SOURCES 
